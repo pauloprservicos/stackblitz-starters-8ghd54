@@ -1,0 +1,60 @@
+<div>
+  <h2>Angular Dynamic Forms</h2>
+</div>
+
+<div class="instructions">
+  <h3>Instructions</h3>
+  <section>
+    <p>
+      Start altering the form fields and observe the <b>isDirty</b> value to
+      change.
+    </p>
+    <p>
+      When you fill all the fields correctly the <b>Click me</b> button will be
+      enabled.
+    </p>
+
+    <p>
+      <b>isDirty: </b>
+      <span class="explanation"
+        >Becomes true when you change the value of at least one of the
+        fields.</span
+      >
+    </p>
+
+    <p>
+      <b>isValid: </b>
+      <span class="explanation"
+        >Becomes true when all the fields of the form are filled and there are
+        no validation errors.</span
+      >
+    </p>
+  </section>
+</div>
+
+<ng-container [formGroup]="myForm">
+  <!-- Generator -->
+  <ng-container *ngFor="let formItem of dynamicFormFields">
+    <dynamic-form-field [formItem]="formItem"></dynamic-form-field>
+  </ng-container>
+</ng-container>
+
+<section>
+  <button mat-raised-button color="primary" [disabled]="!myForm.valid">
+    Click me
+  </button>
+</section>
+
+<div>
+  <h3>Form Values</h3>
+  <pre>
+    {{ myForm.value | json}}
+  </pre>
+</div>
+
+<div>
+  <pre>
+    <span style="font-size: 16px;">isValid: </span><span [ngStyle]="{'color': !myForm.valid ? 'red': 'green'}">{{ myForm.valid }}</span>
+    <span style="font-size: 16px;">isDirty: </span><span [ngStyle]="{'color': !myForm.dirty ? 'red': 'green'}">{{ myForm.dirty }}</span>
+  </pre>
+</div>

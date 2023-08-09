@@ -1,0 +1,20 @@
+.dynamic-form-field-container {
+  display: flex;
+  justify-content: center;
+
+  .mat-mdc-text-field-wrapper {
+    width: 80vw;
+  }
+
+  .ng-dirty.ng-touched.ng-invalid {
+    .mdc-text-field {
+      border: 2px solid red;
+    }
+  }
+
+  .ng-dirty.ng-valid.ng-touched {
+    .mdc-text-field {
+      border: 2px solid green;
+    }
+  }
+}
